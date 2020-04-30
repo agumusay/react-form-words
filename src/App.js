@@ -8,20 +8,21 @@ class App extends React.Component {
   state = {
     hasThreeWords: false,
   };
-  childValue = (hasThreeWords, wordsArray) => {
+  childValue = (wordsArray) => {
     this.setState({
-      hasThreeWords: hasThreeWords,
       wordsArray: wordsArray,
+      hasThreeWords: wordsArray.length >= 3 ? true : false
     });
   };
 
   render() {
+    console.log(this.state.hasThreeWords);
     return (
       <div className="App">
         {this.state.hasThreeWords ? (
           <Message wordsArray={this.state.wordsArray} />
         ) : (
-          <WordsInput childValue={this.childValue} />
+          <WordsInput childValue={this.childValue}></WordsInput>
         )}
       </div>
     );

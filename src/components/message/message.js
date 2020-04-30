@@ -18,8 +18,10 @@ class Message extends React.Component {
   }
   render() {
     return (
-      <div>
-        I am a <span>{this.props.wordsArray[this.state.index]}</span>
+      <div className="container">
+        <p className="container-message">
+          I am a <span className="container-span">{this.props.wordsArray[this.state.index]}</span>
+        </p>
       </div>
     );
   }
