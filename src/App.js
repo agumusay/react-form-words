@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import WordsInput from "./components/wordsInput/wordsInput";
+import Message from "./components/message/message";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import "./App.scss";
+
+class App extends React.Component {
+  state = {
+    hasThreeWords: false,
+  };
+  childValue = (hasThreeWords, wordsArray) => {
+    this.setState({
+      hasThreeWords: hasThreeWords,
+      wordsArray: wordsArray,
+    });
+  };
+
+  render() {
+    return (
+      <div className="App">
+        {this.state.hasThreeWords ? (
+          <Message wordsArray={this.state.wordsArray} />
+        ) : (
+          <WordsInput childValue={this.childValue} />
+        )}
+      </div>
+    );
+  }
 }
 
 export default App;
