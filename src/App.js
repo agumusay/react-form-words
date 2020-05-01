@@ -7,7 +7,6 @@ import "./App.scss";
 class App extends React.Component {
   state = {
     hasThreeWords: false,
-    isFormOpen: false,
   };
   childValue = (wordsArray) => {
     this.setState({
@@ -16,17 +15,17 @@ class App extends React.Component {
     });
   };
 
-  messageValue = (boolean) => {
+  showForm = () => {
     this.setState({
-      isFormOpen: boolean,
+      wordsArray: [],
+      hasThreeWords: false,
     });
   };
-
   render() {
     return (
       <div className="App">
         {this.state.hasThreeWords ? (
-          <Message wordsArray={this.state.wordsArray} />
+          <Message wordsArray={this.state.wordsArray} showForm={this.showForm} />
         ) : (
           <WordsInput childValue={this.childValue}></WordsInput>
         )}

@@ -5,9 +5,6 @@ class Message extends React.Component {
     index: 0,
   };
 
-  handleClick = () => {
-    
-  };
   componentDidMount() {
     this.interval = setInterval(() => {
       this.setState({
@@ -22,8 +19,8 @@ class Message extends React.Component {
   render() {
     return (
       <div className="container">
-        <button className="close-button" onClick={this.handleClick}>
-          ×
+        <button className="close-button" onClick={this.props.showForm}>
+          &#60;&#60; Go Back
         </button>
         <p className="container-message">
           I am a <span className="container-span">{this.props.wordsArray[this.state.index]}</span>

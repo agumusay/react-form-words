@@ -39,6 +39,7 @@ class WordsInput extends React.Component {
           Add Words
         </label>
         <input
+          placeholder="Enter word here"
           value={this.state.word}
           type="text"
           name="words-input"
