@@ -5,7 +5,13 @@ class WordsInput extends React.Component {
   state = {
     words: [],
     word: "",
-    hasThreeWords: true,
+    boolean: true,
+  };
+
+  onChangeHandler = (e) => {
+    this.setState({
+      word: e.target.value,
+    });
   };
 
   addWord = (e) => {
@@ -13,24 +19,20 @@ class WordsInput extends React.Component {
     this.setState({
       words: [...this.state.words, this.state.word],
       word: "",
-      hasThreeWords: true,
+      boolean: true,
     });
   };
 
-  showWord = (e) => {
+  showMessage = (e) => {
     e.preventDefault();
     this.setState({
-      hasThreeWords: this.state.words.length >= 3 ? true : false,
+      boolean: this.state.words.length >= 3 ? true : false,
     });
     this.props.childValue(this.state.words);
   };
-  onChangeHandler = (e) => {
-    this.setState({
-      word: e.target.value,
-    });
-  };
+
   render() {
-    console.log(this.state.words, this.state.hasThreeWords);
+    console.log(this.state.words, this.state.boolean);
     return (
       <form action="" className="words">
         <label htmlFor="words-input" className="words-label">
@@ -44,13 +46,9 @@ class WordsInput extends React.Component {
           className="words-input"
           onChange={this.onChangeHandler}
         />
-        {!this.state.hasThreeWords ? (
-          <p className="words-error">Add at least 3 words to continue</p>
-        ) : (
-          ""
-        )}
+        {!this.state.boolean ? <p className="words-error">Add at least 3 words to continue</p> : ""}
         <div className="words-buttons">
-          <button className="words-buttons-show" onClick={this.showWord}>
+          <button className="words-buttons-show" onClick={this.showMessage}>
             Show me the message
           </button>
           <button className="words-buttons-add" onClick={this.addWord}>

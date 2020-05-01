@@ -7,16 +7,22 @@ import "./App.scss";
 class App extends React.Component {
   state = {
     hasThreeWords: false,
+    isFormOpen: false,
   };
   childValue = (wordsArray) => {
     this.setState({
       wordsArray: wordsArray,
-      hasThreeWords: wordsArray.length >= 3 ? true : false
+      hasThreeWords: wordsArray.length >= 3 ? true : false,
+    });
+  };
+
+  messageValue = (boolean) => {
+    this.setState({
+      isFormOpen: boolean,
     });
   };
 
   render() {
-    console.log(this.state.hasThreeWords);
     return (
       <div className="App">
         {this.state.hasThreeWords ? (
